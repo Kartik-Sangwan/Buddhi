@@ -28,7 +28,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Team</a>
@@ -54,16 +54,12 @@
 
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../static/img/background.png" alt="" />
+                <img src="../static/img/Toronto.jpg" alt="" />
                 <div class="carousel-caption">
-                    <h1 class="display-2">Bootstrap</h1>
-                    <h3>Complete Website layout</h3>
-                    <button type="button" class="btn btn-outline-light btn-lg">
-              DEMO
-            </button>
-                    <button type="button" class="btn btn-primary btn-lg">
-              GET STARTED
-            </button>
+                    <h1 class="display-2">Buddhi</h1>
+                    <h3>Debt Management For Millennials</h3>
+                    <button type="button" class="btn btn-outline-light btn-lg">DEMO</button>
+                    <button type="button" class="btn btn-primary btn-lg">GET STARTED</button>
                 </div>
             </div>
             <div class="carousel-item">
@@ -76,7 +72,8 @@
     </div>
 
     <!--- Jumbotron -->
-    <div class="container-fluid">
+
+    <!-- <div class="container-fluid">
         <div class="row jumbotron">
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
                 <p class="lead">
@@ -86,67 +83,62 @@
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
                 <a href="#"><button type="button" class="btn btn-outline-secondary btn-lg">
               Web Hosting
-            </button></a
-          >
+            </button></a>
         </div>
       </div>
-    </div>
+    </div> -->
+
     <!--- Welcome Section -->
     <div class="container-fluid padding">
-      <div class="row welcome text-center">
-        <div class="col-12">
-          <h1 class="display-4">Built with ease.</h1>
+        <div class="row welcome text-center">
+            <div class="col-12">
+                <h1 class="display-4">Plan your student loans ease.</h1>
+            </div>
+            <hr />
+            <div class="col-12">
+                <p class="lead">
+                    Welcome to Buddhi! We provide assistance to the most pressing issue faced by millennials - Student loans.
+                </p>
+            </div>
         </div>
-        <hr />
-        <div class="col-12">
-          <p class="lead">
-            Welcome to my Bootstrap4 webiste tutorial! Bootstap is free and
-            open-source front end library with HTML ans CSS based designs.
-          </p>
-        </div>
-      </div>
     </div>
     <!--- Three Column Section -->
     <div class="container-fluid padding">
-      <div class="row text-center padding">
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <i class="fas fa-code"></i>
-          <h3>HTML5</h3>
-          <p>Built with the latest version of HTML, HTML5.</p>
+        <div class="row text-center padding">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <i class="fas fa-code"></i>
+                <h3>HTML5</h3>
+                <p>Built with the latest version of HTML, HTML5.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <i class="fas fa-bold"></i>
+                <h3>Bootstrap</h3>
+                <p>Built with the latest version of Bootstrap, Bootstrap5.</p>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <i class="fab fa-css3"></i>
+                <h3>CSS3</h3>
+                <p>Built with the latest version of CSS, CSS3.</p>
+            </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <i class="fas fa-bold"></i>
-          <h3>Bootstrap</h3>
-          <p>Built with the latest version of Bootstrap, Bootstrap5.</p>
-        </div>
-        <div class="col-sm-12 col-md-4">
-          <i class="fab fa-css3"></i>
-          <h3>CSS3</h3>
-          <p>Built with the latest version of CSS, CSS3.</p>
-        </div>
-      </div>
-      <hr class="my-4" />
+        <hr class="my-4" />
     </div>
     <!--- Two Column Section -->
     <div class="container-fluid padding">
-      <div class="row padding">
-        <div class="col-lg-6">
-          <h2>If you build it....</h2>
-          <p>
-            The columns will automatically stack on top of one another when the
-            screen size is less than 576px wide.
-          </p>
-          <p>
-            Resize the browser window to see the effect. Responsive web design
-            has become more important as the amount of mobile traffic now
-            accounts for more that half of the total internet traffic.
-          </p>
-          <p>
-            It can also display the web page differently depending on the screen
-            size of viewing device.
-          </p>
-          <br />
-          <a href="#" class="btn btn-primary">Learn more</a>
+        <div class="row padding">
+            <div class="col-lg-6">
+                <h2>If you build it....</h2>
+                <p>
+                    The columns will automatically stack on top of one another when the screen size is less than 576px wide.
+                </p>
+                <p>
+                    Resize the browser window to see the effect. Responsive web design has become more important as the amount of mobile traffic now accounts for more that half of the total internet traffic.
+                </p>
+                <p>
+                    It can also display the web page differently depending on the screen size of viewing device.
+                </p>
+                <br />
+                <a href="#" class="btn btn-primary">Learn more</a>
             </div>
             <div class="col-lg-6">
                 <img src="../static/img/desk.png" alt="" class="image-fluid" />
@@ -162,7 +154,7 @@
         </div>
     </figure>
     <!--- Emoji Section -->
-<!--     <button class="fun" data-toggle="collapse" data-target="#emoji">
+    <!--     <button class="fun" data-toggle="collapse" data-target="#emoji">
       click for fun
     </button>
     <div id="emoji" class="collapse">
