@@ -1,10 +1,10 @@
 from main.forms import RegistrationForm, LoginForm
 from main.models import User, Post
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, session
 from main import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 
-
+# Creating server side session instead of cookie
 
 @app.route('/')
 @app.route('/home')
@@ -34,6 +34,7 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Login', form=form)
 
+# TODO: authorize if user is employer or employee. Can a user be both?
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -46,7 +47,12 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember = form.remember.data)
             next_page = request.args.get('next')
-            flash('Login Successful', 'success')
+            flash(f'Login Successful. Welcome {user.username}', 'success')
+
+            # Stored until user has logged out
+            session['username'] = user.username
+            session['email'] = user.email
+
             if form.category.data == 'Employer':
                 return redirect(next_page) if next_page else redirect(url_for('employer'))
             elif form.category.data == 'Employee':
@@ -55,12 +61,13 @@ def login():
                 return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
             flash('Login Unsuccessful. Check your email and password and try again!', 'danger')
+
     return render_template('login.html', title='Login', form=form)
 
 
 @app.route("/employer")
 def employer():
-    return "Welcome employer"
+    return render_template("employerHome.html", title="Employer Page", username=session['username'])
 
 
 @app.route("/employee")
@@ -72,6 +79,8 @@ def employee():
 def logout():
     logout_user()
     flash('Logged Out Successfully.', 'success')
+    session.pop("username", None)
+    session.pop("email", None)
     return redirect(url_for('home'))
 
 @app.route('/account')
