@@ -27,7 +27,7 @@ def register():
         hashed_password = bcrypt.generate_password_hash(
             form.password.data).decode('utf-8')
         user = User(username=form.username.data, email=form.email.data,
-                    password=hashed_password)
+                    password=hashed_password, category=form.category.data)
         db.session.add(user)
         db.session.commit()
         flash(f'Your account has been created you can now login!', 'success')
@@ -63,5 +63,4 @@ def logout():
 @login_required
 def account():
     return render_template('account.html', title='Account')
-
 
