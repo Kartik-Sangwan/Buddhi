@@ -47,10 +47,25 @@ def login():
             login_user(user, remember = form.remember.data)
             next_page = request.args.get('next')
             flash('Login Successful', 'success')
-            return redirect(next_page) if next_page else redirect(url_for('home'))
+            if form.category.data == 'Employer':
+                return redirect(next_page) if next_page else redirect(url_for('employer'))
+            elif form.category.data == 'Employee':
+                return redirect(next_page) if next_page else redirect(url_for('employee'))
+            else:
+                return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
             flash('Login Unsuccessful. Check your email and password and try again!', 'danger')
     return render_template('login.html', title='Login', form=form)
+
+
+@app.route("/employer")
+def employer():
+    return "Welcome employer"
+
+
+@app.route("/employee")
+def employee():
+    return "Welcome employee"
 
 
 @app.route('/logout')
