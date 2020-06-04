@@ -38,6 +38,7 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    
     if current_user.is_authenticated:
         flash('Already Logged In.', 'success')
         return redirect(url_for('home'))
@@ -68,6 +69,21 @@ def login():
 @app.route("/employer")
 def employer():
     return render_template("employerHome.html", title="Employer Page", username=session['username'])
+
+
+@app.route("/employer/company")
+def company():
+    return render_template("companyInfo.html")
+
+
+@app.route("/employee/employees")
+def employer_employees():
+    return render_template('employeesList.html')
+
+
+@app.route("/employer/add")
+def add_employee():
+    return render_template('employerAdd.html')
 
 
 @app.route("/employee")

@@ -8,14 +8,12 @@
             <legend class="border-bottom mb-4"> Log In </legend>
 
             <div class="form-group">
-                <div class="form-group">
-                    {{ form.category.label(class="form-control-label") }} {% for subfield in form.category %}
-                    <tr>
-                        <td>{{ subfield }}</td>
-                        <td>{{ subfield.label }}</td>
-                    </tr>
-                    {% endfor %}
-                </div>
+                {{ form.category.label(class="form-control-label") }} {% for subfield in form.category %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr>
+                {% endfor %}
             </div>
 
             <div class="form-group">

@@ -1,4 +1,8 @@
 {% extends "layout.html" %} {% block content %}
 <h1>Employer Page</h1>
-<h3>{{ user.usernmae }}</h3>
-{% endblock %}
+<div class="content-section">
+    <h3>{{ username }}</h3>
+    <a href="{{ url_for('add_employee') }}"><button class="btn btn-outline-info">Add Employee</button></a>
+    <a href="{{ url_for('employer_employees') }}"><button class="btn btn-outline-info">Employees</button></a>
+    <a href="{{ url_for('company') }}"><button class="btn btn-outline-info">Company information</button></a>
+</div> {% endblock %}

@@ -32,6 +32,7 @@ class RegistrationForm(FlaskForm):
 
 		if user:
 			raise ValidationError('Email already taken. Please choose another one.')
+	
 
 
 class LoginForm(FlaskForm):
