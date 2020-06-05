@@ -76,10 +76,18 @@ def company():
     return render_template("companyInfo.html")
 
 
-@app.route("/employee/employees")
+@app.route("/employer/employees")
 def employer_employees():
-    return render_template('employeesList.html')
 
+    # TODO: check who is whose employee. Right now, showing all employees in the database
+    users = User.query.filter_by(category='Employee').all()
+    return render_template('employeesList.html', users=users)
+
+
+@app.route("/employer/employees/<int:id>")
+def single_employee(id):
+    user = User.query.get(id)
+    return render_template("singleEmployee.html", user=user)
 
 @app.route("/employer/add")
 def add_employee():

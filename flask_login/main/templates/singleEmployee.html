@@ -1,0 +1,6 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-section">
+    <h1>Employee Information</h1>
+    Employee: {{ user.username }}<br> Email: <a href="mailto:{{user.email}}">{{ user.email }}</a>
+</div>
+{% endblock %}
