@@ -1,7 +1,7 @@
 from main.forms import RegistrationForm, LoginForm
 from main.models import User, Post
-from flask import render_template, url_for, flash, redirect, request, session
-from main import app, db, bcrypt
+from flask import render_template, url_for, flash, redirect, request
+from main import app, db, bcrypt, session
 from flask_login import login_user, current_user, logout_user, login_required
 
 # Creating server side session instead of cookie
@@ -24,7 +24,6 @@ def register():
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        print("THiS IS RUNNING\n")
         hashed_password = bcrypt.generate_password_hash(
             form.password.data).decode('utf-8')
         user = User(username=form.username.data, email=form.email.data,
@@ -93,7 +92,6 @@ def employee():
     registered=False
     if user.access_key != None:
         registered=True
-    print(user.access_key, "\n\n")
     return render_template("employeeHome.html", username = session['username'], registered=registered)
 
 
@@ -115,6 +113,6 @@ def account():
 def show():
     users = User.query.all()
     for user in users:
-        print(user.username, user.password, user.access_key, user.category)
+        print(user.username, user.access_key)
 
-    return "lol"
+    return "check server console"

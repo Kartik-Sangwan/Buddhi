@@ -2,5 +2,7 @@
 <h1>Employer Page</h1>
 <div class="content-section">
     <h3>{{ username }}</h3>
-    {%if registered%} The user has registered {% else %} The user has not registered {% endif %}
+    {%if registered%} The user has registered {% else %} The user has not registered
+    <a href="{{ url_for('plaid_authenticate') }}"><button class="btn btn-outline-info">Authenticate</button></a> {% endif %}
+
 </div> {% endblock %}
