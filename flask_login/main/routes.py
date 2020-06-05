@@ -3,6 +3,9 @@ from main.models import User, Post
 from flask import render_template, url_for, flash, redirect, request
 from main import app, db, bcrypt, session
 from flask_login import login_user, current_user, logout_user, login_required
+from main.plaid_server import *
+import json
+import requests
 
 # Creating server side session instead of cookie
 
@@ -87,7 +90,13 @@ def employer_employees():
 @app.route("/employer/employees/<int:id>")
 def single_employee(id):
     user = User.query.get(id)
-    return render_template("singleEmployee.html", user=user)
+    # TODO: Need to change this to more general
+    res = get_auth('access-sandbox-7c9433c4-e708-42b3-a547-1aab7fbc7937')['auth']['accounts'][7]
+    # employee_dict = json.loads(res)
+    # print(res)
+    student_loan = res["balances"]["current"]
+    currency = res["balances"]['iso_currency_code']
+    return render_template("singleEmployee.html", user=user, student_loan=student_loan, currency=currency)
 
 @app.route("/employer/add")
 def add_employee():

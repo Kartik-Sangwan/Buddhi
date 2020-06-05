@@ -105,16 +105,16 @@ def get_access_token():
 
   return jsonify(exchange_response)
 
-# Retrieve ACH or ETF account numbers for an Item
-# https://plaid.com/docs/#auth
+
+# NOTE: jsonify removed
 @app.route('/auth', methods=['GET'])
-def get_auth():
+def get_auth(employee_access_token):
   try:
-    auth_response = client.Auth.get(access_token)
+    auth_response = client.Auth.get(employee_access_token)
   except plaid.errors.PlaidError as e:
-    return jsonify({'error': {'display_message': e.display_message, 'error_code': e.code, 'error_type': e.type } })
+    return {'error': {'display_message': e.display_message, 'error_code': e.code, 'error_type': e.type } }
   pretty_print_response(auth_response)
-  return jsonify({'error': None, 'auth': auth_response})
+  return {'error': None, 'auth': auth_response}
 
 # Retrieve Transactions for an Item
 # https://plaid.com/docs/#transactions
