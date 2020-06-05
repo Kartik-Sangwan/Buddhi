@@ -1,0 +1,6 @@
+{% extends "layout.html" %} {% block content %}
+<h1>Employer Page</h1>
+<div class="content-section">
+    <h3>{{ username }}</h3>
+    {%if registered%} The user has registered {% else %} The user has not registered {% endif %}
+</div> {% endblock %}

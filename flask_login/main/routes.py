@@ -24,6 +24,7 @@ def register():
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
+        print("THiS IS RUNNING\n")
         hashed_password = bcrypt.generate_password_hash(
             form.password.data).decode('utf-8')
         user = User(username=form.username.data, email=form.email.data,
@@ -88,7 +89,12 @@ def add_employee():
 
 @app.route("/employee")
 def employee():
-    return "Welcome employee"
+    user = User.query.filter_by(username=session['username']).first()
+    registered=False
+    if user.access_key != None:
+        registered=True
+    print(user.access_key, "\n\n")
+    return render_template("employeeHome.html", username = session['username'], registered=registered)
 
 
 @app.route('/logout')
@@ -104,3 +110,11 @@ def logout():
 def account():
     return render_template('account.html', title='Account')
 
+
+@app.route("/show_all")
+def show():
+    users = User.query.all()
+    for user in users:
+        print(user.username, user.password, user.access_key, user.category)
+
+    return "lol"

@@ -13,6 +13,8 @@ class User(db.Model, UserMixin):
 	category = db.Column(db.String, nullable = False)
 	image = db.Column(db.String(60), nullable = False, default = 'default.jpeg')
 	password = db.Column(db.String(120), nullable = False)
+	# access_key never to be shown client side
+	access_key = db.Column(db.String, nullable=True, default=None)
 
 	posts = db.relationship('Post', backref = 'author', lazy = True) 
 
