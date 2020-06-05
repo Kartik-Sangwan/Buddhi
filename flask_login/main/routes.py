@@ -90,13 +90,15 @@ def employer_employees():
 @app.route("/employer/employees/<int:id>")
 def single_employee(id):
     user = User.query.get(id)
-    # TODO: Need to change this to more general
-    res = get_auth('access-sandbox-7c9433c4-e708-42b3-a547-1aab7fbc7937')['auth']['accounts'][7]
+    user_access_token = user.access_token
+    if(user_access_token == None):
+        return render_template("singleEmployee.html", error="Employee has not authenticated yet.")
+    res = get_auth(user_access_token)['auth']['accounts'][7]
     # employee_dict = json.loads(res)
     # print(res)
     student_loan = res["balances"]["current"]
     currency = res["balances"]['iso_currency_code']
-    return render_template("singleEmployee.html", user=user, student_loan=student_loan, currency=currency)
+    return render_template("singleEmployee.html", user=user, student_loan=student_loan, currency=currency, error='')
 
 @app.route("/employer/add")
 def add_employee():
@@ -107,7 +109,7 @@ def add_employee():
 def employee():
     user = User.query.filter_by(username=session['username']).first()
     registered=False
-    if user.access_key != None:
+    if user.access_token != None:
         registered=True
     return render_template("employeeHome.html", username = session['username'], registered=registered)
 
@@ -130,6 +132,6 @@ def account():
 def show():
     users = User.query.all()
     for user in users:
-        print(user.username, user.access_key)
+        print(user.username, user.access_token)
 
     return "check server console"

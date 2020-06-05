@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block content %}
 <div class="content-section">
     <h1>Employee Information</h1>
-    Employee: {{ user.username }}<br> Email: <a href="mailto:{{user.email}}">{{ user.email }}</a><br>
-    <strong>Liabilities</strong><br> Student Loan Amount: {{ student_loan }} {{ currency }}
+    {% if error != '' %} {{ error }} {% else %} Employee: {{ user.username }}<br> Email: <a href="mailto:{{user.email}}">{{ user.email }}</a><br>
+    <strong>Liabilities</strong><br> Student Loan Amount: {{ student_loan }} {{ currency }} {% endif %}
 </div>
 {% endblock %}

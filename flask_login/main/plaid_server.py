@@ -96,11 +96,10 @@ def get_access_token():
   pretty_print_response(exchange_response)
   access_token = exchange_response['access_token']
 
-  # TODO: This is not updating properly
   # adding access token to the user
   user = User.query.filter_by(username=session['username']).first()
   user.access_token = access_token
-  print(user.access_token, "\n\n")
+  print(user.access_token, "\n")
   db.session.commit()
 
   return jsonify(exchange_response)
