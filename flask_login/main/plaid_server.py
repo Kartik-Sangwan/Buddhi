@@ -115,6 +115,15 @@ def get_auth(employee_access_token):
   pretty_print_response(auth_response)
   return {'error': None, 'auth': auth_response}
 
+# Test access token - access-sandbox-1c098ada-aa37-425f-9879-5577c59b6a83
+
+@app.route('/liabilities-get', methods=["GET"])
+def get_liabilities():
+  # print(access_token, "\n\n")
+  response = client.Liabilities.get("access-sandbox-1c098ada-aa37-425f-9879-5577c59b6a83")
+  liabilities = response['liabilities']
+  return jsonify(liabilities)
+
 # Retrieve Transactions for an Item
 # https://plaid.com/docs/#transactions
 @app.route('/transactions', methods=['GET'])

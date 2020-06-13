@@ -10,7 +10,6 @@ import requests
 # Creating server side session instead of cookie
 
 @app.route('/')
-@app.route('/home')
 def home():
     return render_template('index.html')
 
