@@ -112,17 +112,22 @@ def get_auth(employee_access_token):
     auth_response = client.Auth.get(employee_access_token)
   except plaid.errors.PlaidError as e:
     return {'error': {'display_message': e.display_message, 'error_code': e.code, 'error_type': e.type } }
-  pretty_print_response(auth_response)
+  # pretty_print_response(auth_response)
   return {'error': None, 'auth': auth_response}
 
 # Test access token - access-sandbox-1c098ada-aa37-425f-9879-5577c59b6a83
 
 @app.route('/liabilities-get', methods=["GET"])
-def get_liabilities():
+def get_liabilities(employee_access_token):
+# def get_liabilities():
   # print(access_token, "\n\n")
-  response = client.Liabilities.get("access-sandbox-1c098ada-aa37-425f-9879-5577c59b6a83")
+  try:
+    response = client.Liabilities.get("access-sandbox-1c098ada-aa37-425f-9879-5577c59b6a83")
+  except plaid.errors.PlaidError as e:
+    return {'error':{'display_message': e.display_message, 'error_code': e.code, 'error_type': e.type}}
   liabilities = response['liabilities']
-  return jsonify(liabilities)
+  pretty_print_response(liabilities["student"])
+  return {'error': None, 'info': liabilities}
 
 # Retrieve Transactions for an Item
 # https://plaid.com/docs/#transactions
