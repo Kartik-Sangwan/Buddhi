@@ -3,7 +3,7 @@
     <h1>Employee Information</h1>
     {% if error != '' %} {{ error }} {% else %} Employee: {{ user.username }}<br> Email: <a href="mailto:{{user.email}}">{{ user.email }}</a><br>
     <strong>Liabilities</strong>
-    <br> Student Loan Amount: {{ student_loan }} {{ currency }}<br> Expected Payoff Date: {{ loan_info["expected_payoff_date"] }}<br> Interest Rate: {{ loan_info["interest-rate"] }}%<br> Next due date: {{ loan_info["next-due-date"] }}<br> Number of payment
-    remaining: {{ loan_info["payments-remaining"] }}<br> {% endif %}
+    <br> Student Loan Amount: {{ student_loan }} {{ currency }}<br> Expected Payoff Date: {{ loan_info["payoff-date"] }}<br> Interest Rate: {{ loan_info["interest-rate"] }}%<br> Next due date: {{ loan_info["next-due-date"] }}<br> Number of payment remaining:
+    {{ loan_info["payments-remaining"] }}<br> {% endif %}
 </div>
 {% endblock %}
