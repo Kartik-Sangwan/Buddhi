@@ -1,7 +1,8 @@
 {% extends "layout.html" %} {% block content %}
 <div class="content-section">
     <h1>Employee Information</h1>
-    {% if error != '' %} {{ error }} {% else %} Employee: {{ user.username }}<br> Email: <a href="mailto:{{user.email}}">{{ user.email }}</a><br>
+    {% if error != '' %} {{ error }}<br>
+    <a href="{{ url_for('send_mail') }}"><button class="btn btn-outline-info">Request employee for authorization.</button></a> {% else %} Employee: {{ user.username }}<br> Email: <a href="mailto:{{user.email}}">{{ user.email }}</a><br>
     <strong>Liabilities</strong>
     <br> Student Loan Amount: {{ student_loan }} {{ currency }}<br> Expected Payoff Date: {{ loan_info["payoff-date"] }}<br> Interest Rate: {{ loan_info["interest-rate"] }}%<br> Next due date: {{ loan_info["next-due-date"] }}<br> Number of payment remaining:
     {{ loan_info["payments-remaining"] }}<br> {% endif %}

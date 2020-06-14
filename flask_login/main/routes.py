@@ -6,6 +6,18 @@ from flask_login import login_user, current_user, logout_user, login_required
 from main.plaid_server import *
 import json
 import requests
+from flask_mail import Mail, Message
+
+# I have given access to less secure apps for loggin into gmail account for this checking email. Need to fix later
+# Sending an email
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'imployie@gmail.com'
+app.config['MAIL_PASSWORD'] = 'Wewillrockyou'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
 
 # Creating server side session instead of cookie
 
@@ -145,3 +157,14 @@ def show():
         print(user.username, user.access_token)
 
     return "check server console"
+
+@app.route("/mail")
+def send_mail():
+    msg = Message(subject='Verification of account needed', sender = 'imployie@gmail.com', recipients = ['adityagoyaldoon@gmail.com'])
+    # msg.body = "This is a checking email from Imployie"
+    msg.html = render_template("mailTemplate.html")
+
+    mail.send(msg)
+    flash(f'Request sent successfully', 'success')
+
+    return redirect(url_for('employer_employees'))
