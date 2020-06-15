@@ -1,8 +1,79 @@
 {% extends "layout.html" %} {% block content %}
+<!--  Added the style here for now as main.css is not working. -->
+<style>
+  .float-l {
+    margin: 10px;
+  }
+
+  .total {
+    width: 100px;
+    margin-left: 75%;
+  }
+</style>
+
 <h1>Employer Page</h1>
 <div class="content-section">
-    <h3>{{ username }}</h3>
-    {%if registered%} The user has registered {% else %} The user has not registered
-    <a href="{{ url_for('plaid_authenticate') }}"><button class="btn btn-outline-info">Authenticate</button></a> {% endif %}
+  <h3>Welcome, {{ username }}</h3>
+  {%if registered%}
+  <div class="content-section">
+    <div class="media">
+      <img class="rounded-circle account-img" src="{{image_file}}" />
+      <div class="media-body">
+        <h2 class="account-heading">{{username}}</h2>
+        <p class="text-secondary">{{ current_user.email}}</p>
+      </div>
+    </div>
+    <!-- EMPLOYEE ACCOUNT INFO HERE -->
+    <div>
+      <table class="table">
+        <tr>
+          <th>Sno.</th>
+          <th>Lending Institution</th>
+          <th>Monthly Payment</th>
+          <th>Employee Monthly Payment</th>
+          <th>Amount remaining</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>TD</td>
+          <td>700</td>
+          <td>500</td>
+          <td>50000</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>TD</td>
+          <td>700</td>
+          <td>500</td>
+          <td>50000</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>TD</td>
+          <td>700</td>
+          <td>500</td>
+          <td>50000</td>
+        </tr>
+      </table>
+      <br />
+      <div class="total">TOTAL: NIL</div>
+    </div>
 
-</div> {% endblock %}
+    <br />
+    <!-- ACTIONS AVAILABLE -->
+    <button type="button" class="btn btn-info float-l">REFINANCE</button>
+    <a href="{{url_for('updateUsrPass')}}"
+      ><button type="button" class="btn btn-info float-l">
+        EDIT PROFILE
+      </button></a
+    >
+    <button type="button" class="btn btn-info float-l">PAY INSTALLMENT</button>
+    <button type="button" class="btn btn-info float-l">ADD BANK</button>
+    <button type="button" class="btn btn-info float-l">DELETE BANK</button>
+  </div>
+</div>
+{% else %} You have not registered yet.
+<a href="{{ url_for('plaid_authenticate') }}"
+  ><button class="btn btn-outline-info">Authenticate</button></a
+>
+{% endif %} {% endblock %}
