@@ -1,9 +1,11 @@
-from main.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from main.forms import (RegistrationForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm)
 from main.models import User, Post
 from flask import render_template, url_for, flash, redirect, request
-from main import app, db, bcrypt, session
+from main import app, db, bcrypt, session, mail
 from flask_login import login_user, current_user, logout_user, login_required
 from main.plaid_server import *
+from werkzeug.utils import secure_filename
+from flask_mail import Message
 import json
 import requests
 import secrets
@@ -138,9 +140,12 @@ def add_employee():
 @login_required
 def employee():
     user = User.query.filter_by(username=session["username"]).first()
+    print(user)
     registered = False
     if user and user.access_token != None:
         registered = True
+        print(user.access_token)
+    print(user.image)
     image_file = url_for("static", filename="profile_pics/" + current_user.image)
     return render_template(
         "employeeHome.html",
@@ -156,12 +161,16 @@ def save_picture(form_picture):
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_f_name = random_name + f_ext
     picture_path = os.path.join(app.root_path, "static/profile_pics/", picture_f_name)
-    app.logger.info("HELLO")
+    
     form_picture.save(picture_path)
     return picture_f_name
 
 
 # Update username and the password of the current logged in user.
+def allowed_file(filename):
+    ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route("/employee/updateUsrPass", methods=["GET", "POST"])
@@ -169,13 +178,29 @@ def save_picture(form_picture):
 def updateUsrPass():
 
     form = UpdateAccountForm()
-    print("HERE")
+    if request.method == 'POST':
+            flag = 0
+            if 'file' not in request.files:
+                print('No file part')
+                flash('No file part')
+                flag = 1
+                
+            if flag == 0:
+                file = request.files['file']
+
+                if file.filename == '':
+                    print('no file selected')
+                    flash('No selected file')
+                    
+                
+                if allowed_file(file.filename):
+                    file = secure_filename(file.filename)
+                    pic_f_name = save_picture(request.files['file'])
+                    current_user.image = pic_f_name
+                    db.session.commit()
+               
+
     if form.validate_on_submit():
-        print(form.picture.data)
-        if form.picture.data:
-            print("HERE2")
-            picture_file_name = save_picture(form.picture.data)
-            current_user.image = picture_file_name
         # Update the credential of this user.
         current_user.username = form.username.data
         current_user.email = form.email.data
@@ -206,17 +231,6 @@ def logout():
     return redirect(url_for("home"))
 
 
-@app.route("/account")
-@login_required
-def account():
-    return render_template(
-        "employeeHome.html",
-        username=current_user.username,
-        registered=True,
-        image_file=image_file,
-    )
-
-
 @app.route("/show_all")
 def show():
     users = User.query.all()
@@ -224,3 +238,55 @@ def show():
         print(user.username, user.access_token)
 
     return "check server console"
+
+# Send this user an email for reset password.
+def send_reset_email(user):
+    token = user.get_reset_token()
+    print(user.email)
+    msg = Message('Password Reset Request', sender='noreply@demo.com', recipients=[user.email])
+    msg.body = f'''
+    To reset Your Password visit the following link.
+{url_for('reset_token', token = token, _external=True)}
+Thanks and enjoy using the platform and give us feedback.
+    '''
+    mail.send(msg)
+
+
+@app.route("/reset_password", methods=["GET", "POST"])
+def reset_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
+    form = RequestResetForm()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(email = form.email.data).first()
+        # Send this user an email for reset password.
+        send_reset_email(user)
+        flash('An email has been sent to reset your password.', 'success')
+        return redirect(url_for('login'))
+    return render_template('reset_request.html', title = "Reset Password", form = form)
+
+
+@app.route("/reset_password/<token>", methods=["GET", "POST"])
+def reset_token(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
+    user = User.verify_reset_token(token)
+    if user is None:
+        flash('That is an invalid/expired token', 'warning')
+        return redirect(url_for('reset_request'))
+    
+    # Valid token thus change this user can update his password.
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode(
+            "utf-8"
+        )
+        
+        user.password = hashed_password
+        db.session.commit()
+        flash('Your password has been updated! Please login', 'success')
+        return redirect(url_for('login'))
+    return render_template('reset_token.html', title = "Reset Password", form = form)

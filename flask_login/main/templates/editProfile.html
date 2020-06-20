@@ -8,6 +8,8 @@
       <p class="text-secondary">{{ current_user.email}}</p>
     </div>
   </div>
+  
+
   <!-- UPDATE FORM SECTION -->
   <div class="content-section">
     <form method="POST" , action="" encrypte="multipart/form-data">
@@ -40,15 +42,7 @@
           {% else %} {{ form.email(class="form-control form-control-lg") }} {%
           endif %}
         </div>
-        <div class="form-group">
-          {{ form.picture.label() }}
-          {{ form.picture(class="form-control-file") }}
-          {% if form.picture.errors %}
-          {% for error in form.picture.errors %}
-          <span class="text-danger">{{ error }}</span></br>
-          {% endfor %}
-          {% endif %}
-        </div>
+        
       </fieldset>
 
       <div class="form-group">
@@ -56,5 +50,15 @@
       </div>
     </form>
   </div>
-  {% endblock %}
 </div>
+<div class="content-section">
+<div class="form-group">
+  <h5>Upload new File</h5>
+  <form method=post enctype=multipart/form-data> <input type=file name=file>
+    <input type=submit value=Upload class="btn btn-outline-info">
+  </form>
+</div>
+</div>
+
+
+{% endblock content %}
