@@ -145,7 +145,13 @@ def employee():
     if user and user.access_token != None:
         registered = True
         print(user.access_token)
-    print(user.image)
+        print("line-break")
+        response = client.Liabilities.get(user.access_token)
+        liabilities = response['liabilities']
+        print(response)
+        print("line-break")
+        print(liabilities)
+        
     image_file = url_for("static", filename="profile_pics/" + current_user.image)
     return render_template(
         "employeeHome.html",
