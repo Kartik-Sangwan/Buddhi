@@ -8,34 +8,26 @@ from werkzeug.utils import secure_filename
 from flask_mail import Message
 import json
 import requests
-<<<<<<< HEAD
+import secrets
+import os
+
 from flask_mail import Mail, Message
 
 # I have given access to less secure apps for loggin into gmail account for this checking email. Need to fix later
 # Sending an email
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'imployie@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Wewillrockyou'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
+# app.config['MAIL_SERVER']='smtp.gmail.com'
+# app.config['MAIL_PORT'] = 465
+# app.config['MAIL_USERNAME'] = 'imployie@gmail.com'
+# app.config['MAIL_PASSWORD'] = 'Wewillrockyou'
+# app.config['MAIL_USE_TLS'] = False
+# app.config['MAIL_USE_SSL'] = True
 
-mail = Mail(app)
-
-# Creating server side session instead of cookie
-
-@app.route('/')
-=======
-import secrets
-import os
-
-
+# mail = Mail(app)
 # Creating server side session instead of cookie
 
 
 @app.route("/")
 @app.route("/home")
->>>>>>> employer-section
 def home():
     return render_template("index.html")
 
@@ -132,27 +124,27 @@ def employer_employees():
 def single_employee(id):
     user = User.query.get(id)
     user_access_token = user.access_token
-<<<<<<< HEAD
-    if(user_access_token == None):
-        return render_template("singleEmployee.html", error="Employee has not authenticated yet.")
-    response = get_auth(user_access_token)
-    liabilities_info = get_liabilities(user_access_token)
-    if (not(liabilities_info["error"] is None) or not(response["error"] is None)):
-        return "Error is raised"
-    # print(liabilities_info["info"])
+# <<<<<<< HEAD
+#     if(user_access_token == None):
+#         return render_template("singleEmployee.html", error="Employee has not authenticated yet.")
+#     response = get_auth(user_access_token)
+#     liabilities_info = get_liabilities(user_access_token)
+#     if (not(liabilities_info["error"] is None) or not(response["error"] is None)):
+#         return "Error is raised"
+#     # print(liabilities_info["info"])
     
-    # 
-    # Can a person have multiple student loans?? as "student returns a list"
-    # 
-    # 
-    liabilities_inner_info = liabilities_info["info"]["student"][0]
-    liabilities_dict = {"payoff-date": liabilities_inner_info["expected_payoff_date"], "interest-rate": liabilities_inner_info["interest_rate_percentage"], 
-    "next-due-date": liabilities_inner_info["next_payment_due_date"], "payments-remaining": liabilities_inner_info["pslf_status"]["payments_remaining"]}
-    res = response['auth']['accounts'][7]
-    student_loan = res["balances"]["current"]
-    currency = res["balances"]['iso_currency_code']
-    return render_template("singleEmployee.html", user=user, student_loan=student_loan, currency=currency, error='', loan_info=liabilities_dict)
-=======
+#     # 
+#     # Can a person have multiple student loans?? as "student returns a list"
+#     # 
+#     # 
+#     liabilities_inner_info = liabilities_info["info"]["student"][0]
+#     liabilities_dict = {"payoff-date": liabilities_inner_info["expected_payoff_date"], "interest-rate": liabilities_inner_info["interest_rate_percentage"], 
+#     "next-due-date": liabilities_inner_info["next_payment_due_date"], "payments-remaining": liabilities_inner_info["pslf_status"]["payments_remaining"]}
+#     res = response['auth']['accounts'][7]
+#     student_loan = res["balances"]["current"]
+#     currency = res["balances"]['iso_currency_code']
+#     return render_template("singleEmployee.html", user=user, student_loan=student_loan, currency=currency, error='', loan_info=liabilities_dict)
+# =======
     if user_access_token == None:
         return render_template(
             "singleEmployee.html", error="Employee has not authenticated yet."
@@ -170,7 +162,7 @@ def single_employee(id):
         error="",
     )
 
->>>>>>> employer-section
+# >>>>>>> employer-section
 
 @app.route("/employer/add")
 def add_employee():
@@ -280,7 +272,7 @@ def show():
 
     return "check server console"
 
-<<<<<<< HEAD
+# <<<<<<< HEAD
 @app.route("/mail")
 def send_mail():
     msg = Message(subject='Verification of account needed', sender = 'imployie@gmail.com', recipients = ['adityagoyaldoon@gmail.com'])
@@ -291,7 +283,7 @@ def send_mail():
     flash(f'Request sent successfully', 'success')
 
     return redirect(url_for('employer_employees'))
-=======
+# =======
 # Send this user an email for reset password.
 def send_reset_email(user):
     token = user.get_reset_token()
@@ -343,4 +335,4 @@ def reset_token(token):
         flash('Your password has been updated! Please login', 'success')
         return redirect(url_for('login'))
     return render_template('reset_token.html', title = "Reset Password", form = form)
->>>>>>> employer-section
+# >>>>>>> employer-section

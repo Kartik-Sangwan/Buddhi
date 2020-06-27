@@ -11,11 +11,13 @@ SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://srgnjmwphcsgad:44b5e2ed731d875e936f7a603f6276ec767e6f04999d78f2803443d8f2bb27cc@ec2-52-7-39-178.compute-1.amazonaws.com:5432/ddrr83pesoni9k'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'sunitasangwan121@gmail.com'
-app.config['MAIL_PASSWORD'] = 'kakpro123'
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'imployie@gmail.com'
+app.config['MAIL_PASSWORD'] = 'Wewillrockyou'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
 mail = Mail(app)
 
 db = SQLAlchemy(app)
