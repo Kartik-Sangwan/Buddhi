@@ -10,7 +10,11 @@ h3,
 h4,
 h5,
 h6 {
+<<<<<<< HEAD
     color: #444444;
+=======
+  color: #444444;
+>>>>>>> employer-section
 }
 
 .bg-steel {
@@ -57,9 +61,15 @@ a.article-title:hover {
 }
 
 .article-metadata {
+<<<<<<< HEAD
     padding-bottom: 1px;
     margin-bottom: 4px;
     border-bottom: 1px solid #e3e3e3
+=======
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3;
+>>>>>>> employer-section
 }
 
 .article-metadata a:hover {
@@ -81,6 +91,7 @@ a.article-title:hover {
 }
 
 .account-heading {
+<<<<<<< HEAD
     font-size: 2.5rem;
 }
 
@@ -92,3 +103,7 @@ a.article-title:hover {
     background-color: rgb(245, 245, 245) !important;
     /* color: rgb(220, 220, 234) !important; */
 }
+=======
+  font-size: 2.5rem;
+}
+>>>>>>> employer-section
