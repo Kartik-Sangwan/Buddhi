@@ -28,13 +28,11 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                        <a class="nav-link" href="#team-section">Team</a>
                     </li>
+                   
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Service</a>
+                        <a class="nav-link" href="#connect">Connect</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('login') }}">Login</a>
@@ -67,15 +65,17 @@
                 <div class="carousel-caption">
                     <!-- <h1 class="display-2"></h1> -->
                     <h3>Give your employees the gift of student loan assistance by choosing Employie.</h3>
+                    <button type="button" class="btn btn-outline-light btn-lg">DEMO</button>
+                    <button type="button" class="btn btn-primary btn-lg">GET STARTED</button>
                 </div>
             </div>
-            <div class="carousel-item">
+            <!-- <div class="carousel-item">
                 <img src="../static/img/background3.png" alt="" />
-            </div>
+            </div> -->
         </div>
-        <div class="carousel-item">
+        <!-- <div class="carousel-item">
             <img src="../static/img/background3.png" alt="" />
-        </div>
+        </div> -->
     </div>
     </div>
 
@@ -131,7 +131,7 @@
                 <p>Built with the latest version of CSS, CSS3.</p>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <!-- <div class="col-xs-12 col-sm-6 col-md-4">
             <i class="fas fa-bold"></i>
             <h3>Bootstrap</h3>
             <p>Built with the latest version of Bootstrap, Bootstrap5.</p>
@@ -140,7 +140,7 @@
             <i class="fab fa-css3"></i>
             <h3>CSS3</h3>
             <p>Built with the latest version of CSS, CSS3.</p>
-        </div>
+        </div> -->
     </div>
     <hr class="my-4" />
     </div>
@@ -148,36 +148,53 @@
     <div class="container-fluid padding">
         <div class="row padding">
             <div class="col-lg-6">
-                <h2>Your data is protected with us.</h2>
+                <!-- <h2>Your data is protected with us.</h2>
                 <p>
                     We completely value the data trusted with us and don't share or sell it with any unauthorized third parties.
                 </p>
-                <!-- <p>
-                    Resize the browser window to see the effect. Responsive web design has become more important as the amount of mobile traffic now accounts for more that half of the total internet traffic.
-                </p>
-                <p>
-                    It can also display the web page differently depending on the screen size of viewing device.
-                </p> -->
                 <br />
-                <a href="#" class="btn btn-primary">Terms and conditions</a>
+                <a href="#" class="btn btn-primary">Terms and conditions</a> -->
+                <h2>Employers: <h4>Help Employee to pay down their debt!</h4></h2>
+                <ul>
+                    <li>Attract and retain top talent</li>
+                    <li>Help employee to manage student debt</li>
+                    <li>Easy Payment Plan</li>
+                    <li>No hidden fees</li>
+
+                </ul>
             </div>
+            <div class="col-lg-6">
+                <img src="../static/img/employer.jpg" alt="" class="image-fluid" />
+            </div>
+        </div>
+        <div class="row padding">
             <div class="col-lg-6">
                 <img src="../static/img/desk.png" alt="" class="image-fluid" />
             </div>
+            <div class="col-lg-6">
+                <h2>Employees: <h4>Help pay down student loan early!</h4>
+                </h2>
+                <ul>
+                    <li>Link all your lending accounts in one place</li>
+                    <li>Preffered rate on refianancing</li>
+                    <li>RESP contribution</li>
+                    <li>Manage and view payments easily</li>
+                
+                </ul>
+            </div>
+           
         </div>
-        <div class="col-lg-6">
-            <img src="../static/img/desk.png" alt="" class="image-fluid" />
-        </div>
+        
     </div>
     </div>
 
     <hr class="my-4" />
     <!--- Fixed background -->
-    <figure>
+    <!-- <figure>
         <div class="fixed-wrap">
             <div id="fixed"></div>
         </div>
-    </figure>
+    </figure> -->
     <!--- Emoji Section -->
     <!--     <button class="fun" data-toggle="collapse" data-target="#emoji">
       click for fun
@@ -201,6 +218,7 @@
         </div>
     </div> -->
     <!--- Meet the team -->
+    <div id="team-section">
     <div class="container-fluid padding">
         <div class="row welcome text-center">
             <div class="col-12">
@@ -210,54 +228,58 @@
         </div>
     </div>
     <!--- Cards -->
-    <div class="container-fluid padding">
-        <div class="row padding">
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" src="../static/img/team1.png" alt="" />
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            John Doe
-                        </h4>
-                        <p>
-                            John is an internet enterpreneur with almost 20 years of experience.
-                        </p>
-                        <a href="#" class="btn btn-outline-secondary">See Profile</a>
+    
+        <div class="container-fluid padding">
+            <div class="row padding">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="../static/img/team1.png" alt="" />
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Rishab
+                            </h4>
+                            <p>
+                                Rishab is a post-grad student completing his masters in
+                                Finance and sth. He work for this company also.
+                            </p>
+                            <a href="#" class="btn btn-outline-secondary">See Profile</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" src="../static/img/team2.png" alt="" />
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            Mary Jo
-                        </h4>
-                        <p>
-                            Joe is an designer with almost 10years of digital design experience.
-                        </p>
-                        <a href="#" class="btn btn-outline-secondary">See Profile</a>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="../static/img/team2.png" alt="" />
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Kartik
+                            </h4>
+                            <p>
+                                Undergraduate Computer Science student at University of Toronto.
+                            </p>
+                            <a href="#" class="btn btn-outline-secondary">See Profile</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" src="../static/img/team3.png" alt="" />
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            Phil Ho
-                        </h4>
-                        <p>
-                            Phil is a developer with almost 5years of development experience.
-                        </p>
-                        <a href="#" class="btn btn-outline-secondary">See Profile</a>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="../static/img/team3.png" alt="" />
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Aditya
+                            </h4>
+                            <p>
+                                Undergraduate Computer Science student at University Of Toronto.
+                            </p>
+                            <a href="#" class="btn btn-outline-secondary">See Profile</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
     <!--- Two Column Section -->
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
         <div class="row padding">
             <div class="col-lg-6">
                 <h2>Our Philosophy</h2>
@@ -275,22 +297,25 @@
             </div>
         </div>
         <hr class="my-4" />
-    </div>
+    </div> -->
     <!--- Connect -->
-    <div class="container-fluid padding">
-        <div class="row text-center">
-            <div class="col-12">
-                <h2>Connect</h2>
-            </div>
-            <div class="col-12 social">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+    <div id="connect">
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h2>Connect</h2>
+                </div>
+                <div class="col-12 social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
         </div>
     </div>
+    
     <!--- Footer -->
     <footer>
         <div class="container-fluid padding">
@@ -306,24 +331,23 @@
                 <div class="col-md-4">
                     <br />
                     <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+            
                     <hr class="light" />
                     <p>Our Hours</p>
                     <p>Monday-Friday: 9:00am - 5:00pm</p>
                     <p>Saturday: 10:00am - 4:00pm</p>
                     <p>Sunday: Closed</p>
                 </div>
-                <div class="col-md-4">
-                    <br />
-                    <br />
-                    <hr class="light" />
-                    <p>Our Hours</p>
-                    <p>Monday-Friday: 9:00am - 5:00pm</p>
-                    <p>Saturday: 10:00am - 4:00pm</p>
-                    <p>Sunday: Closed</p>
-                </div>
+                
                 <div class="col-12">
                     <hr class="light-100" />
-                    <h5>&copy; yoyoycopyright</h5>
+                    <h5>&copy; Imployiecopyright2020</h5>
                 </div>
             </div>
         </div>
