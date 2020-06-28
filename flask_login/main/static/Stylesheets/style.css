@@ -79,6 +79,11 @@ li {
   font-size: 20px;
 }
 
+.card-img-top {
+  width: 390px;
+  height: 300px;
+}
+
 .fa-code {
   color: orangered;
 }
