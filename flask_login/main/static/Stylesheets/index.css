@@ -100,6 +100,14 @@ li {
 .card-img-top {
     width: 390px;
     height: 300px;
+    margin: 20px;
+    margin-left: 10%;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.card-body {
+    text-align: center;
 }
 
 .fa-code {
@@ -128,6 +136,10 @@ li {
 .fa-css3 {
     font-size: 4rem;
     margin: 1rem;
+}
+
+.off-white {
+    background-color: rgb(245, 245, 245);
 }
 
 .fun {
