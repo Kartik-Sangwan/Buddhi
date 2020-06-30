@@ -47,13 +47,15 @@
 
     <main role="main" class="container">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
           {% with messages = get_flashed_messages(with_categories=true) %} {% if
           messages %} {% for cat, msg in messages %}
           <div class="alert alert-{{ cat }}">
             {{ msg }}
           </div>
-          {% endfor %} {% endif %} {% endwith%} {% block content %}{% endblock
+          {% endfor %} {% endif %} 
+          {% endwith%} 
+          {% block content %}{% endblock
           %}
         </div>
         <!-- REMOVED THE SIDE-BAR FOR NOW -->
@@ -72,6 +74,9 @@
             </div> -->
       </div>
     </main>
+
+    <!-- To take the whole page -->
+    {% block body2 %}{% endblock %}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

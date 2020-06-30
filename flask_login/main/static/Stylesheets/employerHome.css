@@ -2,8 +2,23 @@
     text-align: center;
     padding: 20px;
     border: none;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .card:hover {
     box-shadow: 2px 2px black;
+}
+
+.content-section {
+    margin: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
 }

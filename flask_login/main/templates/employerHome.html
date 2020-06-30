@@ -1,36 +1,48 @@
 {% extends "layout.html" %} {% block import %}
-<link href="../static/Stylesheets/employerHome.css" rel="stylesheet" /> {% endblock %} {% block content %}
-<h1>Employer Page</h1>
-<div class="content-section">
-    <h3>{{ username }}</h3>
-    <!-- <a href="{{ url_for('add_employee') }}"><button class="btn btn-outline-info">Add Employee</button></a>
-    <a href="{{ url_for('employer_employees') }}"><button class="btn btn-outline-info">Employees</button></a>
-    <a href="{{ url_for('company') }}"><button class="btn btn-outline-info">Company information</button></a> -->
-    <div class="row padding">
-        <div class="col-lg-4 col-md-4 col-12">
-            <a href="{{ url_for('add_employee') }}">
-                <div class="card">
-                    <div><i class="fas fa-user-plus fa-6x"></i></div>
-                    <h6>Add New Employees</h6>
-                </div>
-            </a>
+<link href="../static/Stylesheets/employerHome.css" rel="stylesheet" /> {% endblock %} {% block body2 %}
+<h1 style="text-align: center;">Employer Page</h1>
+<div class="row no-gutters">
+    <div class="col-md-3">
+        <div class="content-section">
+            <h3 style="text-align: center;">Your info</h3>
+            <p>{{username}}<br> Title
+                <br> Company name<br>
+            </p>
+            <button type="button" class="btn btn-info float-l">EDIT</button>
         </div>
+    </div>
 
-        <div class="col-lg-4 col-md-4 col-12">
-            <a href="{{ url_for('employer_employees') }}">
-                <div class="card">
-                    <div><i class="fas fa-users fa-6x"></i></div>
-                    <h6>All Employees</h6>
+    <div class="col-md-9">
+        <div class="content-section">
+            <h3 style="text-align: center;">Manage employees</h3>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12">
+                    <a href="{{ url_for('add_employee') }}">
+                        <div class="card">
+                            <div><i class="fas fa-user-plus fa-6x"></i></div>
+                            <h6>Add New Employees</h6>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
 
-        <div class="col-lg-4 col-md-4 col-12">
-            <a href="{{ url_for('company') }}">
-                <div class="card">
-                    <div><i class="fas fa-building fa-6x"></i></div>
-                    <h6>Company information</h6>
+                <div class="col-lg-4 col-md-4 col-12">
+                    <a href="{{ url_for('employer_employees') }}">
+                        <div class="card">
+                            <div><i class="fas fa-users fa-6x"></i></div>
+                            <h6>All Employees</h6>
+                        </div>
+                    </a>
                 </div>
-            </a>
+
+                <div class="col-lg-4 col-md-4 col-12">
+                    <a href="{{ url_for('company') }}">
+                        <div class="card">
+                            <div><i class="fas fa-building fa-6x"></i></div>
+                            <h6>Company information</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div> {% endblock %}
+    </div>
+</div> {% endblock %}
