@@ -1,0 +1,9 @@
+.card {
+    text-align: center;
+    padding: 20px;
+    border: none;
+}
+
+.card:hover {
+    box-shadow: 2px 2px black;
+}
