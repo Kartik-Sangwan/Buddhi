@@ -17,7 +17,9 @@
     {%if registered%}
     <div class="content-section">
         <div class="media">
-            <img class="rounded-circle account-img" src="{{image_file}}" />
+            {% if not image_file %}
+            <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/user2.png') }}" /> {% else %}
+            <img class="rounded-circle account-img" src="{{image_file}}" /> {% endif %}
             <div class="media-body">
                 <h2 class="account-heading">{{username}}</h2>
                 <p class="text-secondary">{{ current_user.email}}</p>

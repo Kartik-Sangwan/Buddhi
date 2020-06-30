@@ -5,6 +5,17 @@
     <div class="col-md-3">
         <div class="content-section">
             <h3 style="text-align: center;">Your info</h3>
+            <div class="media row row">
+                <div class="col-md-6 col-sm-12">
+                    <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/user2.png') }}" />
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="media-body">
+                        <h2 class="account-heading">{{username}}</h2>
+                        <p class="text-secondary">{{ current_user.email}}</p>
+                    </div>
+                </div>
+            </div>
             <p>{{username}}<br> Title
                 <br> Company name<br>
             </p>
