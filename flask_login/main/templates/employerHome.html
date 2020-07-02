@@ -1,13 +1,19 @@
 {% extends "layout.html" %} {% block import %}
-<link href="../static/Stylesheets/employerHome.css" rel="stylesheet" /> {% endblock %} {% block body2 %}
+<link href="../static/Stylesheets/employerHome.css" rel="stylesheet" />
+<style>
+
+</style>
+{% endblock %} {% block body2 %}
 <h1 style="text-align: center;">Employer Page</h1>
 <div class="row no-gutters">
     <div class="col-md-3">
         <div class="content-section">
             <h3 style="text-align: center;">Your info</h3>
-            <div class="media row row">
+            <div class="media row no-gutters">
                 <div class="col-md-6 col-sm-12">
-                    <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/user2.png') }}" />
+                    {% if not image_file %}
+                    <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/user2.png') }}" /> {% else %}
+                    <img class="rounded-circle account-img" src="{{image_file}}" /> {% endif %}
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="media-body">
@@ -16,10 +22,10 @@
                     </div>
                 </div>
             </div>
-            <p>{{username}}<br> Title
+            <p style="text-align: center; margin: 20px;">{{username}}<br> Title
                 <br> Company name<br>
             </p>
-            <button type="button" class="btn btn-info float-l">EDIT</button>
+            <a href="{{url_for('updateUsrPass')}}"><button type="button" class="btn btn-info float-l" >EDIT</button></a>
         </div>
     </div>
 

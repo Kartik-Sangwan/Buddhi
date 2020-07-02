@@ -7,8 +7,11 @@
     background: red;
 } */
 
-
-/*  */
+#loading {
+    width: 100%;
+    height: 100vh;
+    background: white;
+}
 
 html,
 body {
@@ -34,6 +37,8 @@ body {
     width: 100%;
     height: 700px;
     object-fit: cover;
+    /* position: fixed; */
+    /* z-index: -1; */
 }
 
 .carousel-caption {
@@ -41,12 +46,6 @@ body {
     top: 50%;
     transform: translateY(-50%);
 }
-
-
-/* .carousel-caption img {
-    height: 20px; 
-    width: 300px;
-} */
 
 .carousel-caption h1 {
     font-size: 500%;
@@ -100,6 +99,7 @@ li {
 .card-img-top {
     width: 390px;
     height: 300px;
+    object-fit: cover;
     margin: 20px;
     margin-left: 10%;
     width: 80%;
@@ -214,15 +214,16 @@ hr.light-100 {
 
 @media (max-width: 992px) {
     body {
-        font-size: 4rem;
-        padding: 2rem;
+        /* font-size: 4rem; */
+        /* padding: 2rem; */
     }
 }
 
 @media (max-width: 768px) {
+    /* Slider editing begins */
     .carousel-caption {
         position: absolute;
-        top: 45%;
+        top: 50%;
     }
     .carousel-caption h1 {
         font-size: 350%;
@@ -242,6 +243,13 @@ hr.light-100 {
 }
 
 @media (max-width: 576px) {
+    .display-4 {
+        font-size: 40px !important;
+    }
+    .carousel-inner {
+        width: 100%;
+        height: 60vh;
+    }
     .carousel-caption {
         position: absolute;
         top: 40%;
@@ -301,6 +309,46 @@ figure {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
     will-change: transform;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    /* Light grey */
+    border-top: 16px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+#loader-view {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Loading option spin */
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 

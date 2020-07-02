@@ -102,8 +102,16 @@ def login():
 
 @app.route("/employer")
 def employer():
+    user = User.query.filter_by(username=session["username"]).first()
+    print(user)
+    registered = False
+    if user and user.access_token != None:
+        registered = True
+        print(user.access_token)
+    print(user.image)
+    image_file = url_for("static", filename="profile_pics/" + current_user.image)
     return render_template(
-        "employerHome.html", title="Employer Page", username=session["username"]
+        "employerHome.html", title="Employer Page", username=session["username"], image_file=image_file,
     )
 
 
@@ -125,42 +133,42 @@ def single_employee(id):
     user = User.query.get(id)
     user_access_token = user.access_token
 # <<<<<<< HEAD
-#     if(user_access_token == None):
-#         return render_template("singleEmployee.html", error="Employee has not authenticated yet.")
-#     response = get_auth(user_access_token)
-#     liabilities_info = get_liabilities(user_access_token)
-#     if (not(liabilities_info["error"] is None) or not(response["error"] is None)):
-#         return "Error is raised"
-#     # print(liabilities_info["info"])
+    if(user_access_token == None):
+        return render_template("singleEmployee.html", error="Employee has not authenticated yet.")
+    response = get_auth(user_access_token)
+    liabilities_info = get_liabilities(user_access_token)
+    if (not(liabilities_info["error"] is None) or not(response["error"] is None)):
+        return "Error is raised"
+    # print(liabilities_info["info"])
     
-#     # 
-#     # Can a person have multiple student loans?? as "student returns a list"
-#     # 
-#     # 
-#     liabilities_inner_info = liabilities_info["info"]["student"][0]
-#     liabilities_dict = {"payoff-date": liabilities_inner_info["expected_payoff_date"], "interest-rate": liabilities_inner_info["interest_rate_percentage"], 
-#     "next-due-date": liabilities_inner_info["next_payment_due_date"], "payments-remaining": liabilities_inner_info["pslf_status"]["payments_remaining"]}
-#     res = response['auth']['accounts'][7]
-#     student_loan = res["balances"]["current"]
-#     currency = res["balances"]['iso_currency_code']
-#     return render_template("singleEmployee.html", user=user, student_loan=student_loan, currency=currency, error='', loan_info=liabilities_dict)
-# =======
-    if user_access_token == None:
-        return render_template(
-            "singleEmployee.html", error="Employee has not authenticated yet."
-        )
-    res = get_auth(user_access_token)["auth"]["accounts"][7]
-    # employee_dict = json.loads(res)
-    # print(res)
+    # 
+    # Can a person have multiple student loans?? as "student returns a list"
+    # 
+    # 
+    liabilities_inner_info = liabilities_info["info"]["student"][0]
+    liabilities_dict = {"payoff-date": liabilities_inner_info["expected_payoff_date"], "interest-rate": liabilities_inner_info["interest_rate_percentage"], 
+    "next-due-date": liabilities_inner_info["next_payment_due_date"], "payments-remaining": liabilities_inner_info["pslf_status"]["payments_remaining"]}
+    res = response['auth']['accounts'][7]
     student_loan = res["balances"]["current"]
-    currency = res["balances"]["iso_currency_code"]
-    return render_template(
-        "singleEmployee.html",
-        user=user,
-        student_loan=student_loan,
-        currency=currency,
-        error="",
-    )
+    currency = res["balances"]['iso_currency_code']
+    return render_template("singleEmployee.html", user=user, student_loan=student_loan, currency=currency, error='', loan_info=liabilities_dict)
+# =======
+    # if user_access_token == None:
+    #     return render_template(
+    #         "singleEmployee.html", error="Employee has not authenticated yet."
+    #     )
+    # res = get_auth(user_access_token)["auth"]["accounts"][7]
+    # # employee_dict = json.loads(res)
+    # # print(res)
+    # student_loan = res["balances"]["current"]
+    # currency = res["balances"]["iso_currency_code"]
+    # return render_template(
+    #     "singleEmployee.html",
+    #     user=user,
+    #     student_loan=student_loan,
+    #     currency=currency,
+    #     error="",
+    # )
 
 # >>>>>>> employer-section
 
@@ -184,7 +192,7 @@ def employee():
         "employeeHome.html",
         username=session["username"],
         registered=registered,
-        image_file=image_file,
+        image_file=image_file
     )
 
 

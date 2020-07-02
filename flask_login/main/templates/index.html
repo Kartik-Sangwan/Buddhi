@@ -12,13 +12,27 @@
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
     <link href="../static/Stylesheets/index.css" rel="stylesheet" />
+    <script>
+        // might not be working
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector("#loader-view").remove();
+        });
+    </script>
 </head>
 
 <body>
+
+    <!-- Loader -->
+    <div id="loader-view">
+        <div class="spinner-border text-primary loader" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-md navbar-light bg-light bg-custom-color sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img id="logo" src="../static/img/Logos-1/facebook_cover_photo_1.png" alt="logo.png" /></a>
+            <a class="navbar-brand" href="#"><img id="logo" src="../static/img/Logos-1/header.png" alt="logo.png" /></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
             </button>
