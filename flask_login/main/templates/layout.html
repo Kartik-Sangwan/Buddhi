@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
 
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="{{ url_for('static', filename='Scripts/main.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}" /> {% if title %}
-    <title>Flask-Blog {{ title }}</title>
+    <title>Imployie {{ title }}</title>
     {% else %}
     <title>Flask Blog</title>
     {% endif %} {% block import %} {% endblock %}
@@ -60,7 +61,7 @@
                             <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
                         </li>
                         {% else %}
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Home</a>
                         </li>
                         <li class="nav-item">
@@ -83,11 +84,15 @@
         <main role="main" class="container">
             <div class="row">
                 <div class="col-md-12">
-                    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for cat, msg in messages %}
-                    <div class="alert alert-{{ cat }}">
-                        {{ msg }}
+                    <div id="alert-message">
+                        {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for cat, msg in messages %}
+                        <div class="alert alert-{{ cat }}">
+                            {{ msg }}
+                        </div>
+
+                        {% endfor %} {% endif %} {% endwith%}
                     </div>
-                    {% endfor %} {% endif %} {% endwith%} {% block content %}{% endblock %}
+                    {% block content %}{% endblock %}
                 </div>
             </div>
         </main>

@@ -87,7 +87,8 @@ def login():
                 )
             elif form.category.data == "Employee":
                 return (
-                    redirect(next_page) if next_page else redirect(url_for("employee"))
+                    # redirect(next_page) if next_page else redirect(url_for("employee"))
+                    plaid_authenticate()
                 )
             else:
                 return redirect(next_page) if next_page else redirect(url_for("home"))

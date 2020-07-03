@@ -53,8 +53,17 @@ client = plaid.Client(client_id = PLAID_CLIENT_ID, secret=PLAID_SECRET,
 
 @app.route('/plaid_authenticate')
 def plaid_authenticate():
+  # return render_template(
+  #   'index.ejs',
+  #   plaid_public_key=PLAID_PUBLIC_KEY,
+  #   plaid_environment=PLAID_ENV,
+  #   plaid_products=PLAID_PRODUCTS,
+  #   plaid_country_codes=PLAID_COUNTRY_CODES,
+  # )
+  # print("BEING RUN\n\n\n")
+
   return render_template(
-    'index.ejs',
+    'employeeHome.html',
     plaid_public_key=PLAID_PUBLIC_KEY,
     plaid_environment=PLAID_ENV,
     plaid_products=PLAID_PRODUCTS,

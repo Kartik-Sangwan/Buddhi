@@ -1,6 +1,18 @@
+/* General customization */
+
 body {
     background: #fafafa;
     color: #333333;
+    font-family: "Poppins", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #444444;
 }
 
 #background {
@@ -13,17 +25,26 @@ body {
     /* clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0% 100%); */
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #444444;
+
+/* General customization ends */
+
+
+/* Navbar */
+
+#logo {
+    width: 150px;
 }
 
-.bg-steel {
-    background-color: #5f788a;
+.navbar-nav {
+    padding: 0px !important;
+}
+
+.navabar.nav li {
+    padding-right: 20px;
+}
+
+.nav-link {
+    font-size: 1.1em!important;
 }
 
 .site-header .navbar-nav .nav-link {
@@ -36,6 +57,29 @@ h6 {
 
 .site-header .navbar-nav .nav-link.active {
     font-weight: 500;
+}
+
+
+/* Navbar ends */
+
+
+/* Main body */
+
+.container {
+    margin-top: 10px;
+}
+
+
+/* ******** Animation for removal of message box ********** */
+
+
+/* ******** Animation for removal of message box ends ********** */
+
+
+/* Main body ends */
+
+.bg-steel {
+    background-color: #5f788a;
 }
 
 .content-section {
@@ -82,19 +126,14 @@ a.article-title:hover {
     vertical-align: middle;
 }
 
-.account-img {
+
+/* .account-img {
     height: 100px;
     width: 100%;
-    /* margin-right: 20px; */
-    /* margin-bottom: 16px; */
-}
+} */
 
 .account-heading {
     font-size: 2.5rem;
-}
-
-#logo {
-    width: 150px;
 }
 
 .bg-custom-color {
@@ -105,10 +144,4 @@ a.article-title:hover {
 li {
     margin: 30px;
     font-size: 0.75rem;
-}
-
-.navbar-nav {
-    padding: 0px !important;
-    /* margin: 0px !important; */
-    /* height: 50px; */
 }
