@@ -9,7 +9,8 @@ import os
 app = Flask(__name__)
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://srgnjmwphcsgad:44b5e2ed731d875e936f7a603f6276ec767e6f04999d78f2803443d8f2bb27cc@ec2-52-7-39-178.compute-1.amazonaws.com:5432/ddrr83pesoni9k'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://srgnjmwphcsgad:44b5e2ed731d875e936f7a603f6276ec767e6f04999d78f2803443d8f2bb27cc@ec2-52-7-39-178.compute-1.amazonaws.com:5432/ddrr83pesoni9k'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://acfdpdofaelhim:7069b1654eaad7bf00a0fcfd3bd8e6866b9b153f2f2545fd2737392e8351a957@ec2-52-7-39-178.compute-1.amazonaws.com:5432/dmvjhc44eloou'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
