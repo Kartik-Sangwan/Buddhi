@@ -14,24 +14,14 @@
 <h1 style="text-align: center;">Employer Page</h1>
 <div class="row no-gutters">
     <div class="col-md-3">
-        <div class="content-section">
-            <h3 style="text-align: center;">Your info</h3>
-            <div class="media row no-gutters">
-                <div class="col-md-6 col-sm-12">
-                    {% if not image_file %}
-                    <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/user2.png') }}" /> {% else %}
-                    <img class="rounded-circle account-img" src="{{image_file}}" /> {% endif %}
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="media-body">
-                        <h2 class="account-heading">{{username}}</h2>
-                        <p class="text-secondary">{{ current_user.email}}</p>
-                    </div>
-                </div>
-            </div>
-            <p style="text-align: center; margin: 20px;">{{username}}<br> Title
-                <br> Company name<br>
-            </p>
+        <div style="text-align: center;" class="content-section">
+            <h3>Your info</h3>
+            {% if not image_file %}
+            <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/user2.png') }}" /> {% else %}
+            <img class="rounded-circle account-img" src="{{image_file}}" /> {% endif %}
+
+            <h3>{{username}}</h3>
+            <p>Title<br> Company name</p>
             <a href="{{url_for('updateUsrPass')}}"><button type="button" class="btn btn-info float-l" >EDIT</button></a>
         </div>
     </div>

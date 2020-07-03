@@ -132,9 +132,10 @@ a.article-title:hover {
     width: 100%;
 } */
 
-.account-heading {
+
+/* .account-heading {
     font-size: 2.5rem;
-}
+} */
 
 .bg-custom-color {
     background-color: rgb(245, 245, 245) !important;
