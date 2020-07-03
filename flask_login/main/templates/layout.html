@@ -47,7 +47,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-md navbar-light bg-light bg-custom-color sticky-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url_for('home') }}"><img id="logo" src="../static/img/Logos-1/header.png" alt="logo.png" /></a>
+                <a class="navbar-brand" href="{{ url_for('home') }}"><img id="logo" src="{{ url_for('static', filename='img/Logos-1/header.png') }}" alt="logo.png" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
             </button>

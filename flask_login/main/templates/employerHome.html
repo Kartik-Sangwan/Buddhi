@@ -1,20 +1,13 @@
 {% extends "layout.html" %} {% block import %}
 <link href="../static/Stylesheets/employerHome.css" rel="stylesheet" />
 <style>
-    .account-img {
-        height: 100px;
-        width: 100px;
-        border-radius: 100%;
-        object-fit: cover;
-        /* margin-right: 20px; */
-        /* margin-bottom: 16px; */
-    }
+
 </style>
 {% endblock %} {% block body2 %}
-<h1 style="text-align: center;">Employer Page</h1>
+<!-- <h1 style="text-align: center;">Employer Page</h1> -->
 <div class="row no-gutters">
     <div class="col-md-3">
-        <div style="text-align: center;" class="content-section">
+        <div style="text-align: center;" class="content-section content-box">
             <h3>Your info</h3>
             {% if not image_file %}
             <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/user2.png') }}" /> {% else %}
@@ -27,7 +20,7 @@
     </div>
 
     <div class="col-md-9">
-        <div class="content-section">
+        <div class="content-section content-box">
             <h3 style="text-align: center;">Manage employees</h3>
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-12">

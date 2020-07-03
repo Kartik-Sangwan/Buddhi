@@ -1,5 +1,6 @@
-{% extends "layout.html" %} {% block content %}
-<div class="content-section">
+{% extends "layout.html" %} {% block import %}
+<link href="../static/Stylesheets/employerHome.css" rel="stylesheet" />{% endblock %} {% block body2 %}
+<!-- <div class="content-section">
     <h1>Employees</h1>
     {% if users == [] %}
     <h4>No results to show</h4>
@@ -17,5 +18,41 @@
         {% endfor %}
     </table>
     {% endif %}
+</div> -->
+<div class="row no-gutters">
+    <div class="col-md-3">
+        <div style="text-align: center;" class="content-section content-box">
+            <h3>Your info</h3>
+            {% if not image_file %}
+            <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/user2.png') }}" /> {% else %}
+            <img class="rounded-circle account-img" src="{{image_file}}" /> {% endif %}
+
+            <h3>{{username}}</h3>
+            <p>Title<br> Company name</p>
+            <a href="{{url_for('updateUsrPass')}}"><button type="button" class="btn btn-info float-l" >EDIT</button></a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="content-section content-box">
+            <h1>Employees</h1>
+            {% if users == [] %}
+            <h4>No results to show</h4>
+            {% else %}
+            <table id="table" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                </tr>
+                {% for user in users %}
+                <tr>
+                    <td><a href="{{ url_for('single_employee', id=user.id) }}">{{ user.username }}</a></td>
+                    <td>{{ user.email }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}
