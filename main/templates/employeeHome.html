@@ -79,10 +79,12 @@
                 <button type="button" class="btn btn-info float-l">DELETE BANK</button>
             </div>
         </div>
-        {% else %} You have not registered yet.
-        <a href="{{ url_for('plaid_authenticate') }}"><button class="btn btn-outline-info">Authenticate</button></a>
+        {% else %} You need to authenticate your bank account with us from which you pay student loan from. <br> You have multiple bank accounts? You can add all later on. Start by authenticating one of them.
+        <h3>We DO NOT share your sensitive information with anyone.</h3>
+        <p id="reload-text"></p>
+        <!-- <a href="{{ url_for('plaid_authenticate') }}"><button class="btn btn-outline-info">Authenticate</button></a> -->
         <div id="container" class="initial-view">
-            <button id="link-btn" class="button button--is-primary">Connect with Plaid</button>
+            <button id="link-btn" class="button button--is-primary btn btn-outline-info">Authenticate</button>
             <div class="loading-indicator"></div>
         </div>
     </div>
@@ -191,6 +193,8 @@
 
         $('#link-btn').on('click', function(e) {
             handler.open();
+            // Asks the user to log out and then login
+            document.querySelectory("#reload-text").innerHTML += "You need to logout and reload the page";
         });
 
         $('#get-accounts-btn').on('click', function(e) {
