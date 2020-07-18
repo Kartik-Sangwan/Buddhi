@@ -19,7 +19,12 @@
         <div class="content-section content-box">
             <h3 style="text-align: center;">Manage Company Information</h3>
             Name:<br> {{ user.company }}
-            <br> Admin access:<br> PEOPLE WHO HAVE ACCESS TO EMPLOYEE PAYMENTS<br> Benefits amount this month:<br> BENEFITS AMOUNT<br>
+            <br> Admin access:
+            <ul>
+                {% for admin in admins %}
+                <li>{{ admin.username }}</li>
+                {% endfor %}
+            </ul> Benefits amount this month:<br> BENEFITS AMOUNT<br>
 
         </div>
     </div>

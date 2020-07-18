@@ -118,8 +118,11 @@ def employer():
 
 @app.route("/employer/company")
 def company():
+
+    company = User.query.filter_by(username=session["username"]).first().company
     user = User.query.filter_by(username=session["username"]).first()
-    return render_template("companyInfo.html", user=user)
+    admins = User.query.filter_by(category="Employer", company=company)
+    return render_template("companyInfo.html", user=user, admins=admins)
 
 
 @app.route("/employer/employees")
