@@ -126,7 +126,8 @@ def company():
 def employer_employees():
 
     # TODO: check who is whose employee. Right now, showing all employees in the database
-    users = User.query.filter_by(category="Employee").all()
+    company = User.query.filter_by(username=session["username"]).first().company
+    users = User.query.filter_by(category="Employee", company=company).all()
     return render_template("employeesList.html", users=users)
 
 
