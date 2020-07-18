@@ -1,1 +1,27 @@
-{% extends "layout.html" %} {% block contents %} {% endblock %}
+{% extends "layout.html" %} {% block import %}
+<link href="../static/Stylesheets/employerHome.css" rel="stylesheet" /> {% endblock %} {% block body2 %}
+
+<div class="row no-gutters">
+    <div class="col-md-3">
+        <div style="text-align: center;" class="content-section content-box">
+            <h3>Your info</h3>
+            {% if not image_file %}
+            <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/user2.png') }}" /> {% else %}
+            <img class="rounded-circle account-img" src="{{image_file}}" /> {% endif %}
+
+            <h3>{{username}}</h3>
+            <p>Title<br> Company name</p>
+            <a href="{{url_for('updateUsrPass')}}"><button type="button" class="btn btn-info float-l" >EDIT</button></a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="content-section content-box">
+            <h3 style="text-align: center;">Manage Company Information</h3>
+            Name:<br> COMPANY NAME
+            <br> Admin access:<br> PEOPLE WHO HAVE ACCESS TO EMPLOYEE PAYMENTS<br> Benefits amount this month:<br> BENEFITS AMOUNT<br>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

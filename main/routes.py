@@ -52,6 +52,7 @@ def register():
             email=form.email.data,
             password=hashed_password,
             category=form.category.data,
+            company=form.company.data,
         )
         db.session.add(user)
         db.session.commit()
@@ -109,8 +110,9 @@ def employer():
         registered = True
         print(user.access_token)
     image_file = url_for("static", filename="profile_pics/" + current_user.image)
+    print(user.company, user.username, "\n\n\n")
     return render_template(
-        "employerHome.html", title="Employer Page", username=session["username"], image_file=image_file,
+        "employerHome.html", title="Employer Page", username=session["username"], image_file=image_file, user=user,
     )
 
 
@@ -227,6 +229,7 @@ def updateUsrPass():
         db.session.commit()
         flash("Your account has been updated!", "success")
         image_file = url_for("static", filename="profile_pics/" + current_user.image)
+        # TODO: Change this for employer
         return render_template(
             "employeeHome.html",
             username=current_user.username,

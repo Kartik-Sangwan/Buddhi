@@ -15,6 +15,8 @@ class RegistrationForm(FlaskForm):
         "Username", validators=[DataRequired(), Length(min=2, max=20)]
     )
 
+    company = StringField("Company", validators=[DataRequired()])
+
     email = StringField("Email", validators=[DataRequired(), Email()])
 
     password = PasswordField("Password", validators=[DataRequired()])
@@ -40,6 +42,10 @@ class RegistrationForm(FlaskForm):
 
         if user:
             raise ValidationError("Email already taken. Please choose another one.")
+
+    # TODO: complete this
+    def validate_company(self, company):
+        pass
 
 
 class LoginForm(FlaskForm):
