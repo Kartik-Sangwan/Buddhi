@@ -118,7 +118,8 @@ def employer():
 
 @app.route("/employer/company")
 def company():
-    return render_template("companyInfo.html")
+    user = User.query.filter_by(username=session["username"]).first()
+    return render_template("companyInfo.html", user=user)
 
 
 @app.route("/employer/employees")
