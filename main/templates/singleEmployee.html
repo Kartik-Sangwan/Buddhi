@@ -1,10 +1,37 @@
-{% extends "layout.html" %} {% block content %}
-<div class="content-section">
-    <h1>Employee Information</h1>
-    {% if error != '' %} {{ error }}<br>
-    <a href="{{ url_for('send_mail') }}"><button class="btn btn-outline-info">Request employee for authorization.</button></a> {% else %} Employee: {{ user.username }}<br> Email: <a href="mailto:{{user.email}}">{{ user.email }}</a><br>
-    <strong>Liabilities</strong>
-    <br> Student Loan Amount: {{ student_loan }} {{ currency }}<br> Expected Payoff Date: {{ loan_info["payoff-date"] }}<br> Interest Rate: {{ loan_info["interest-rate"] }}%<br> Next due date: {{ loan_info["next-due-date"] }}<br> Number of payment remaining:
-    {{ loan_info["payments-remaining"] }}<br> {% endif %}
+{% extends "layout.html" %} {% block import %}
+<link href="{{ url_for('static', filename='Stylesheets/employerHome.css') }}" rel="stylesheet" />{% endblock import %} {% block body2 %}
+<div class="row no-gutters">
+    <div class="col-md-3">
+        <div style="text-align: center;" class="content-section content-box">
+            <h3>Your info</h3>
+            {% if not image_file %}
+            <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile_pics/user2.png') }}" /> {% else %}
+            <img class="rounded-circle account-img" src="{{image_file}}" /> {% endif %}
+
+            <h3>{{username}}</h3>
+            <p>Title<br> {{user.company}}</p>
+            <a href="{{url_for('updateUsrPass')}}"><button type="button" class="btn btn-info float-l" >EDIT</button></a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="content-section content-box">
+            <h1>Employee Information</h1>
+            {% if error != '' %} {{ error }}<br>
+            <a href="{{ url_for('send_mail') }}"><button class="btn btn-outline-info">Request employee for authorization.</button></a> {% else %} Employee: {{ user.username }}<br> Email: <a href="mailto:{{user.email}}">{{ user.email }}</a><br>
+            <strong>Liabilities</strong>
+            <br> Student Loan Amount: {{ student_loan }} {{ currency }}<br> Expected Payoff Date: {{ loan_info["payoff-date"] }}<br> Interest Rate: {{ loan_info["interest-rate"] }}%<br> Next due date: {{ loan_info["next-due-date"] }}<br> Number of payment
+            remaining: {{ loan_info["payments-remaining"] }}<br> {% endif %}
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="content-section content-box">
+            <h1>Calculator</h1>
+            {% if error != '' %} {{ error }}<br>
+            <a href="{{ url_for('send_mail') }}"><button class="btn btn-outline-info">Request employee for authorization.</button></a> {% else %} Employee: {{ user.username }}<br> Email: <a href="mailto:{{user.email}}">{{ user.email }}</a><br>
+            <strong>Liabilities</strong>
+            <br> Student Loan Amount: {{ student_loan }} {{ currency }}<br> Expected Payoff Date: {{ loan_info["payoff-date"] }}<br> Interest Rate: {{ loan_info["interest-rate"] }}%<br> Next due date: {{ loan_info["next-due-date"] }}<br> Number of payment
+            remaining: {{ loan_info["payments-remaining"] }}<br> {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}
