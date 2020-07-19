@@ -17,6 +17,8 @@ class RegistrationForm(FlaskForm):
 
     company = StringField("Company", validators=[DataRequired()])
 
+    position = StringField("Title", validators=[DataRequired()])
+
     email = StringField("Email", validators=[DataRequired(), Email()])
 
     password = PasswordField("Password", validators=[DataRequired()])

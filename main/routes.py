@@ -53,12 +53,13 @@ def register():
             password=hashed_password,
             category=form.category.data,
             company=form.company.data,
+            position=form.position.data,
         )
         db.session.add(user)
         db.session.commit()
         flash(f"Your account has been created you can now login!", "success")
         return redirect(url_for("login"))
-    return render_template("register.html", title="Login", form=form)
+    return render_template("register.html", form=form)
 
 
 # TODO: authorize if user is employer or employee. Can a user be both?
@@ -110,7 +111,7 @@ def employer():
         registered = True
         print(user.access_token)
     image_file = url_for("static", filename="profile_pics/" + current_user.image)
-    print(user.company, user.username, "\n\n\n")
+    print(user.position, "\n\n\n")
     return render_template(
         "employerHome.html", title="Employer Page", username=session["username"], image_file=image_file, user=user,
     )

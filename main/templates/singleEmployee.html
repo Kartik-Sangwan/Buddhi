@@ -9,7 +9,7 @@
             <img class="rounded-circle account-img" src="{{image_file}}" /> {% endif %}
 
             <h3>{{username}}</h3>
-            <p>Title<br> {{user.company}}</p>
+            <p>{{user.position}}<br> {{user.company}}</p>
             <a href="{{url_for('updateUsrPass')}}"><button type="button" class="btn btn-info float-l" >EDIT</button></a>
         </div>
     </div>
